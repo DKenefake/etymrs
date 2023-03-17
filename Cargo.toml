@@ -1,0 +1,18 @@
+[package]
+name = "emtyrs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.93"
+serde = { version = "1.0.152", features = ["derive"]}
+
+[profile.release]
+opt-level=3
+lto=true
+
+[profile.test]
+opt-level=3
+lto=true
