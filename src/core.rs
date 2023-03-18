@@ -32,7 +32,7 @@ impl WordData {
         self.get_value(word, lang)
     }
 
-    pub(crate) fn simple_analysis(
+    pub fn simple_analysis(
         &self,
         words: &Vec<String>,
         lang: &String,
