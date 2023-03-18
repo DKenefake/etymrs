@@ -1,9 +1,15 @@
 [package]
-name = "emtyrs"
+name = "etymrs"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+homepage = "https://github.com/DKenefake/etymrs"
+authors = ["Dustin Kenefake"]
+license = "BSD-3-Clause"
+description = "An etymological analysis tool for plain text"
+repository  = "https://github.com/DKenefake/etymrs"
+readme = "Readme.md"
+keywords = ["etymology"]
+include = ["data/words.json","book.txt"]
 
 [dependencies]
 serde_json = "1.0.93"
@@ -11,7 +17,8 @@ serde = { version = "1.0.152", features = ["derive"]}
 
 [profile.release]
 opt-level=3
-lto=true
+lto="fat"
+codegen-units = 1
 
 [profile.bench]
 harness = false
