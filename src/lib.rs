@@ -1,5 +1,6 @@
 mod core;
 mod word;
+mod stats;
 
 #[cfg(test)]
 mod tests {
@@ -9,8 +10,8 @@ mod tests {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     #[test]
-    fn read_json() {
-        let word_data = WordData::generate_from_json("src//words.json");
+    fn test_read_json() {
+        let word_data = WordData::generate_from_json("data//words.json");
 
         for v in word_data
             .get_value(&String::from("drink"), &String::from("English"))
@@ -21,8 +22,8 @@ mod tests {
     }
 
     #[test]
-    fn test_anal() {
-        let word_data = WordData::generate_from_json("src//words.json");
+    fn test_analysis() {
+        let word_data = WordData::generate_from_json("data//words.json");
         let s = |x: &str| String::from(x);
 
         let input = "You can feel that can't you It has an aura of jealousy"
@@ -38,13 +39,13 @@ mod tests {
     }
 
     #[test]
-    fn test_perf() {
+    fn test_performance() {
 
         // create the word_data struct from the json file
-        let word_data = WordData::generate_from_json("src//words.json");
+        let word_data = WordData::generate_from_json("data//words.json");
 
         // read in a sample text
-        let data = fs::read_to_string("src//book.txt").expect("Unable to read file");
+        let data = fs::read_to_string("data//book.txt").expect("Unable to read file");
 
         // tokenize and run
         let input = data.split(" ").map(|x| String::from(x)).collect();

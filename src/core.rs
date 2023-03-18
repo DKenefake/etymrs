@@ -1,5 +1,7 @@
+// core of the application
+
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use std::fs::File;
 use std::io::BufReader;
@@ -34,7 +36,7 @@ impl WordData {
     pub(crate) fn simple_analysis(
         &self,
         words: &Vec<String>,
-        lang: &String,
+        lang: &String
     ) -> (HashMap<&String, usize>, usize) {
 
         // if the language is not in  the data base we can early return

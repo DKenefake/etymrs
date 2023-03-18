@@ -13,4 +13,5 @@ serde = { version = "1.0.152", features = ["derive"]}
 opt-level=3
 lto=true
 
-[profile.test]
+[profile.bench]
+harness = false
