@@ -1,12 +1,12 @@
 #![crate_name = "etymrs"]
 
 mod core;
-mod word;
 mod stats;
+mod word;
 
+pub use core::*;
 pub use stats::*;
 pub use word::*;
-pub use core::*;
 
 #[cfg(test)]
 mod tests {
@@ -46,7 +46,6 @@ mod tests {
 
     #[test]
     fn test_performance() {
-
         // create the word_data struct from the json file
         let word_data = WordData::generate_from_json("data//words.json");
 
@@ -71,7 +70,10 @@ mod tests {
             .unwrap()
             .as_nanos();
 
-        println!("Time to solve is {} ms with {} ns per word", (end - start)/1_000_000u128, (end - start)/(input.len() as u128));
+        println!(
+            "Time to solve is {} ms with {} ns per word",
+            (end - start) / 1_000_000u128,
+            (end - start) / (input.len() as u128)
+        );
     }
-
 }

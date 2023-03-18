@@ -14,7 +14,6 @@ pub(crate) struct WordData {
 }
 
 impl WordData {
-
     pub(crate) fn generate_from_json(json_path: &str) -> WordData {
         // generate a WordData struct from a json
         let path = Path::new(json_path);
@@ -29,19 +28,18 @@ impl WordData {
         // self.data.get("English")?.get("word")
     }
 
-    pub(crate) fn word_analysis(&self, word:&String, lang:&String) -> Option<&Vec<String>>{
+    pub(crate) fn word_analysis(&self, word: &String, lang: &String) -> Option<&Vec<String>> {
         self.get_value(word, lang)
     }
 
     pub(crate) fn simple_analysis(
         &self,
         words: &Vec<String>,
-        lang: &String
+        lang: &String,
     ) -> (HashMap<&String, usize>, usize) {
-
         // if the language is not in  the data base we can early return
         if !self.data.contains_key(lang) {
-            return (HashMap::new(), 0)
+            return (HashMap::new(), 0);
         }
 
         let mut output = HashMap::new();
@@ -49,11 +47,10 @@ impl WordData {
 
         // iterate over the set of input words
         for word in words {
-
             // find the lowercase word
             let lowered_word = word.to_lowercase();
 
-            if let Some(p) = self.get_value(&lowered_word, lang){
+            if let Some(p) = self.get_value(&lowered_word, lang) {
                 for x in p.iter() {
                     output.entry(x).and_modify(|count| *count += 1).or_insert(1);
                 }

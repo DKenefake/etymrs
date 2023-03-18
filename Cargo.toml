@@ -9,10 +9,8 @@ description = "An etymological analysis tool for plain text"
 repository  = "https://github.com/DKenefake/etymrs"
 readme = "Readme.md"
 keywords = ["etymology"]
-include = ["data/words.json","book.txt"]
+include = ["data/*"]
 
-[lib]
-name = "etymrs"
 
 [dependencies]
 serde_json = "1.0.93"
