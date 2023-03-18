@@ -9,12 +9,12 @@ use std::option::Option;
 use std::path::Path;
 
 #[derive(Serialize, Deserialize)]
-pub(crate) struct WordData {
+pub struct WordData {
     data: HashMap<String, HashMap<String, Vec<String>>>,
 }
 
 impl WordData {
-    pub(crate) fn generate_from_json(json_path: &str) -> WordData {
+    pub fn generate_from_json(json_path: &str) -> WordData {
         // generate a WordData struct from a json
         let path = Path::new(json_path);
         let file = File::open(path).unwrap();
