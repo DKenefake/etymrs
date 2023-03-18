@@ -11,6 +11,7 @@ This will not differentiate situations were the same word will have the multiple
  - [x] Database connection to Etymological Database
  - [x] Summary of language use
  - [x] Base Performance
+ - [x] Command Line Interface (CLI)
  - [ ] Word Filtering
  - [ ] Summery Statistics 
  - [ ] Detailed Statistics
