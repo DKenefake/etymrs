@@ -11,6 +11,9 @@ readme = "Readme.md"
 keywords = ["etymology"]
 include = ["data/words.json","book.txt"]
 
+[lib]
+name = "etymrs"
+
 [dependencies]
 serde_json = "1.0.93"
 serde = { version = "1.0.152", features = ["derive"]}

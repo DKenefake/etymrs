@@ -1,6 +1,12 @@
+#![crate_name = "etymrs"]
+
 mod core;
 mod word;
 mod stats;
+
+pub use stats::*;
+pub use word::*;
+pub use core::*;
 
 #[cfg(test)]
 mod tests {
