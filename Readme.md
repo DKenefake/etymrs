@@ -4,7 +4,7 @@ This is a tool in progress for analysing the etymological background of entire s
 
 ### Some Notes
 
-This will not differentiate situations were the same word will have the multiple different backgrounds. Such as the word 'or', which has the usage of "tea or coffee" and "gold/yellow". One has germanic background and the other has a latin background. In general, this is a hard problem to get around.
+This will not differentiate situations were the same word will have the multiple different backgrounds. Such as the word 'or', which has the usage of "tea or coffee" and "gold/yellow". One has germanic etymology and the other has a latin etymology. In general, this is a hard problem to get around.
 
 ### Features
 
