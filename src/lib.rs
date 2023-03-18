@@ -1,17 +1,18 @@
 #![crate_name = "etymrs"]
 
-mod core;
-mod stats;
-mod word;
+pub mod core;
+pub mod stats;
+pub mod word;
 
-pub use core::*;
-pub use stats::*;
-pub use word::*;
+pub use crate::core::*;
+pub use crate::stats::*;
+pub use crate::word::*;
 
 #[cfg(test)]
 mod tests {
 
     use crate::core::WordData;
+    use crate::*;
     use std::fs;
     use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -71,9 +72,10 @@ mod tests {
             .as_nanos();
 
         println!(
-            "Time to solve is {} ms with {} ns per word",
+            "Time to solve is {} ms with {} ns per word, {} not counted words",
             (end - start) / 1_000_000u128,
-            (end - start) / (input.len() as u128)
+            (end - start) / (input.len() as u128),
+            not_counted
         );
     }
 }
