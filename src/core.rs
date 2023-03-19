@@ -39,7 +39,7 @@ impl WordData {
     ) -> (HashMap<&String, usize>, usize) {
         // if the language is not in  the data base we can early return
         if !self.data.contains_key(lang) {
-            return (HashMap::new(), 0);
+            return (HashMap::new(), words.len());
         }
 
         let mut output = HashMap::new();
