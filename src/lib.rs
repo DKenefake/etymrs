@@ -57,7 +57,7 @@ mod tests {
         let data = fs::read_to_string("data//shakespeare.txt").expect("Unable to read file");
 
         // tokenize and run
-        let input = data.split(" ").map(|x| String::from(x)).map(|x| x.replace(&['(', ')', ',', '\"', '.', ';', ':', '\''],"")).collect();
+        let input = data.split(" ").map(String::from).map(|x| x.replace(&['(', ')', ',', '\"', '.', ';', ':', '\''],"")).collect();
 
         let (a,b) = word_data.simple_analysis(&input, &s("English"));
 
@@ -77,7 +77,7 @@ mod tests {
         let data = fs::read_to_string("data//book.txt").expect("Unable to read file");
 
         // tokenize and run
-        let input = data.split(" ").map(|x| String::from(x)).collect();
+        let input = data.split(" ").map(String::from).map(|x| x.replace(&['(', ')', ',', '\"', '.', ';', ':', '\''],"")).collect();
 
         // get an initial time
         let start = SystemTime::now()
@@ -86,7 +86,7 @@ mod tests {
             .as_nanos();
 
         // run the analysis
-        let (results, not_counted) = word_data.simple_analysis(&input, &String::from("English"));
+        let (results, not_counted) = word_data.complex_analysis(&input, &String::from("English"), &|x,y| ! (x.eq("or") && y.eq("Latin")));
 
         // get an end time
         let end = SystemTime::now()

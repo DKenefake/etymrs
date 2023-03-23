@@ -61,6 +61,8 @@ impl WordData {
                         output.entry(x).and_modify(|count| *count += 1).or_insert(1);
                     }
                 }
+            }else {
+                not_coded += 1;
             }
         }
 
