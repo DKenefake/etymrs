@@ -37,6 +37,11 @@ impl WordData {
         words: &Vec<String>,
         lang: &String,
     ) -> (HashMap<&String, usize>, usize) {
+        self.complex_analysis(words, lang, &|_,_| true)
+    }
+
+    /// does a complex analysis of the input words, and filters counting the words that pass the predicate
+    pub fn complex_analysis(&self, words: &Vec<String>, lang: &String, predicate: & dyn Fn(&String, &String) -> bool) -> (HashMap<&String, usize>, usize) {
         // if the language is not in  the data base we can early return
         if !self.data.contains_key(lang) {
             return (HashMap::new(), words.len());
@@ -52,10 +57,10 @@ impl WordData {
 
             if let Some(p) = self.get_value(&lowered_word, lang) {
                 for x in p.iter() {
-                    output.entry(x).and_modify(|count| *count += 1).or_insert(1);
+                    if predicate(&lowered_word, x) {
+                        output.entry(x).and_modify(|count| *count += 1).or_insert(1);
+                    }
                 }
-            } else {
-                not_coded += 1;
             }
         }
 

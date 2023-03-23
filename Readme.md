@@ -12,7 +12,12 @@ This will not differentiate situations were the same word will have the multiple
  - [x] Summary of language use
  - [x] Base Performance
  - [x] Command Line Interface (CLI)
- - [ ] Word Filtering
- - [ ] Summery Statistics 
+ - [x] Word Filtering
+ - [x] Summery Statistics 
  - [ ] Detailed Statistics
  - [ ] More Performance
+
+
+### Copyright Information
+
+The bundled data is licensed under the Creative Commons ShareAlike 3.0 License, or the Gutenberg Project License. Please see the `data` directory for more information.

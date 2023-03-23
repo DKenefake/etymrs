@@ -12,6 +12,7 @@ pub use crate::word::*;
 mod tests {
 
     use crate::core::WordData;
+    use crate::stats::GeneralAnalysis;
     use crate::*;
     use std::fs;
     use std::time::{SystemTime, UNIX_EPOCH};
@@ -42,6 +43,28 @@ mod tests {
 
         for (key, value) in a.0 {
             println!("{} : {}", key, value);
+        }
+
+        println!("{}", a.1)
+    }
+
+    #[test]
+    fn test_general_analysis(){
+        let word_data = WordData::generate_from_json("data//words.json");
+        let s = |x: &str| String::from(x);
+
+        // read in a sample text
+        let data = fs::read_to_string("data//shakespeare.txt").expect("Unable to read file");
+
+        // tokenize and run
+        let input = data.split(" ").map(|x| String::from(x)).map(|x| x.replace(&['(', ')', ',', '\"', '.', ';', ':', '\''],"")).collect();
+
+        let (a,b) = word_data.simple_analysis(&input, &s("English"));
+
+        let gen_anal = GeneralAnalysis::from_count(a);
+
+        for (lang, value) in gen_anal.get_sorted_lang(){
+            println!("{} : {}", lang, value);
         }
     }
 

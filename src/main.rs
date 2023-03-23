@@ -30,10 +30,10 @@ fn main() {
     let data = fs::read_to_string(&args.readfile).expect("Unable to read file");
 
     // tokenize the input
-    let input = data.split(" ").map(|x| String::from(x)).collect();
+    let input = data.split(' ').map(String::from).collect();
 
     // run the analysis
-    let (results, not_counted) = word_data.simple_analysis(&input, &args.language);
+    let (results, _not_counted) = word_data.simple_analysis(&input, &args.language);
 
     // write the file
     let f = File::create(&args.outfile).expect("Unable to write file");
@@ -41,7 +41,7 @@ fn main() {
 
     for (k, v) in results {
         let rendered_line = String::from(format!("{} : {} \n", k, v).as_str());
-        f.write(rendered_line.as_bytes())
+        f.write_all(rendered_line.as_bytes())
             .expect("Unable to write data");
     }
 }
